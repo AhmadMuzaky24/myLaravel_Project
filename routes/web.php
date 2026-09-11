@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+
 
 Route::get('/about', function () {
     return 'Selamat Datang di Barokah Mart!!<br>
@@ -9,15 +13,10 @@ Route::get('/about', function () {
             Pilihan produknya banyak, dari yang receh sampai yang mahal, pilih aja sendiri.';
 });
 
-use App\Http\Controllers\DashboardController;
-
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth'])
     ->name('dashboard');
     
-
-use App\Http\Controllers\Auth\LoginController;
-
 Route::get('/login', [LoginController::class, 'create'])
     ->middleware('guest')
     ->name('login');
@@ -34,6 +33,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
     Route::get('/reports/sales', [ReportController::class, 'sales'])->name('report.sales');
+
+    Route::resource('users', UserController::class);
 });
  
 Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
