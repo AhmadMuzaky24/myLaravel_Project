@@ -21,4 +21,14 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function transactionDetails()
+    {
+        return $this->hasMany(TransactionDetail::class);
+    }
+
+    public function getPriceRupiahAttribute(): string
+    {
+        return 'Rp ' . number_format($this->price, 0, ',', '.');
+    }
 }

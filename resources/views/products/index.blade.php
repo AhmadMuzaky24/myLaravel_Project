@@ -52,7 +52,7 @@
                         </td>
 
                         <td class="px-6 py-4">
-                            Rp {{ number_format($product->price, 0, ',', '.') }}
+                            {{ $product->price_rupiah }}
                         </td>
 
                         <td class="px-6 py-4">
