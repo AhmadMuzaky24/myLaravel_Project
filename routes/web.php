@@ -6,7 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PosController;
-
+use App\Http\Controllers\CategoryController;
 
 Route::get('/about', function () {
     return 'Selamat Datang di Barokah Mart!!<br>
@@ -35,7 +35,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
     Route::get('/reports/sales', [ReportController::class, 'sales'])->name('report.sales');
-
     Route::resource('users', UserController::class);
 });
  
@@ -44,5 +43,4 @@ Route::middleware(['auth', 'role:admin,kasir'])->group(function () {
     Route::post('/pos', [PosController::class, 'store'])->name('pos.store');
     Route::get('/pos/history', [PosController::class, 'history']) ->name('pos.history');
 });
-
 

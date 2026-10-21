@@ -15,6 +15,13 @@
         </p>
     </div>
 
+    <a href="{{ route('products.create') }}"
+        class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">
+        + Tambah Produk
+    </a>
+    <br><br>
+
+    {{-- Notifikasi sukses --}}
 
     {{-- Tabel produk --}}
     <div class="overflow-x-auto rounded-lg bg-white shadow">
